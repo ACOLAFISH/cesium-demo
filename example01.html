@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Intro to SceneView - Create a 3D map</title>
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="http://localhost:419/arcgis_js_api/javascript/4.19/esri/themes/light/main.css" />
+    <script src="http://localhost:419/arcgis_js_api/javascript/4.19/init.js"></script>
+    <script>
+      require(["esri/Map", "esri/views/MapView"], (Map, MapView) => {
+        const map = new Map({
+          // topo-vector,streets,hybird,gray,oceans,national-geographic,terrain,osm
+          basemap: "topo-vector",
+          // ground: "world-elevation"
+        });
+        const view = new MapView({
+          container: "viewDiv", // Reference to the scene div created in step 5
+          map: map, // Reference to the map object created before the scene
+          // scale: 50000000, // Sets the initial scale to 1:50,000,000
+          center: [-101.17, 21.78] // Sets the center point of view with lon/lat
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
